@@ -1,9 +1,6 @@
-"""This is a full example of using Tianshou with MARL to train agents, complete with argument parsing (CLI) and logging.
-Author: Will (https://github.com/WillDudley)
-Python version used: 3.8.10
-Requirements:
-pettingzoo == 1.22.0
-git+https://github.com/thu-ml/tianshou
+"""
+Author: Chun-Sheng Wu
+For Use of ECEN 743 Final Project @ TAMU
 """
 
 import argparse

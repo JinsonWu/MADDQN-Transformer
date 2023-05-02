@@ -23,8 +23,6 @@ from tianshou.utils import TensorboardLogger
 from pettingzoo.classic import tictactoe_v3
 from torch.utils.tensorboard import SummaryWriter
 
-from unit.Transformer import Transformer
-
 env_size = 1
 
 def _get_agents(
