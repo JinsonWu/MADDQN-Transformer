@@ -20,12 +20,13 @@ from tianshou.env.pettingzoo_env import PettingZooEnv
 from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, RandomPolicy
 from tianshou.trainer import offpolicy_trainer
 from tianshou.utils import TensorboardLogger
-from tianshou.utils.net.common import Net, Recurrent
+from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
 from pettingzoo.atari import boxing_v2
 from pettingzoo.classic import tictactoe_v3, chess_v5, go_v5
 
+from net.DRQN import Recurrent
 
 def get_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
@@ -39,7 +40,7 @@ def get_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--n-step", type=int, default=3)
     parser.add_argument("--target-update-freq", type=int, default=100)
-    parser.add_argument("--epoch", type=int, default=300)
+    parser.add_argument("--epoch", type=int, default=100)
     parser.add_argument("--step-per-epoch", type=int, default=1000)
     parser.add_argument("--step-per-collect", type=int, default=16)
     parser.add_argument("--update-per-step", type=float, default=0.2)
@@ -52,13 +53,13 @@ def get_parser() -> argparse.ArgumentParser:
         "--hidden-sizes", type=int, nargs="*", default=[256, 128, 64]
     )
     parser.add_argument("--training-num", type=int, default=16)
-    parser.add_argument("--test-num", type=int, default=20)
+    parser.add_argument("--test-num", type=int, default=10)
     parser.add_argument("--logdir", type=str, default="log")
     parser.add_argument("--render", type=float, default=0.1)
     parser.add_argument(
         "--win-rate",
         type=float,
-        default=0.7,
+        default=1.01,
         help="the expected winning rate: Optimal policy can get 0.7",
     )
     parser.add_argument(
